@@ -26,7 +26,6 @@ import java.util.stream.Stream;
  */
 public abstract class PropertiesFileAwareTask extends PasswordAwareTask {
 
-    private static final String PROPERTIES_PATTERN = ".*\\.properties";
 
     private String[] excludedDirectories = new String[] {".gradle", "build", "out"};
 
@@ -49,7 +48,6 @@ public abstract class PropertiesFileAwareTask extends PasswordAwareTask {
                     return true;
 
                 })
-                .filter(p -> p.getFileName().toString().matches(PROPERTIES_PATTERN))
                 .filter(p -> this.fileFilterPattern == null || p.getFileName().toString().matches(fileFilterPattern))
                 .collect(Collectors.toList());
 
